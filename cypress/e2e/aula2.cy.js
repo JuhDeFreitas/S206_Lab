@@ -80,5 +80,3 @@ function criar_user(){
   cy.get('div.alert').should("contain.text", "Registration successful")
   return infos
 }
-
-
