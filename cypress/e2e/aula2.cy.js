@@ -46,12 +46,35 @@ it('Simulação register Falha', function() {
 
 it("simulaçao de login com sucesso", function(){
     let infos = criar_user()
-      cy.visit('https://globalsqa.com/angularJs-protractor/registration-login-example/#/login')
+    cy.visit('https://globalsqa.com/angularJs-protractor/registration-login-example/#/login')
     cy.get('[name="username"]').type(infos[0]);
     cy.get('[name="password"]').type(infos[1]);
     cy.get('button.btn').click();
     cy.get('h1.ng-binding').should("contain.text", infos[0])
 })
+
+ it("Delete usuário com sucesso", function(){
+  let infos = criar_user()
+  cy.login(infos[0], infos[1])
+  
+  // Verifica se o login recebeu mensagem de aprovado
+  cy.get('h1.ng-binding').should("contain.text", infos[0]);
+  
+  // Deleta user
+  cy.get('a[href="#"]').click();
+  // logou da pagina
+  cy.get('a.btn').click();
+  // Tenta login novamente (Deve falhar)
+  cy.login(infos[0], infos[1])
+  
+  // Testa se falhou
+  cy.get('div.alert').should("contain.text","Username or password is incorrect" );
+ })
+
+
+
+
+
 
 function criar_user(){
 
