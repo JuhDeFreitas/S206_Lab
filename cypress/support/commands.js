@@ -31,3 +31,16 @@ Cypress.Commands.add('login', (id,senha) => {
     cy.get('[name="password"]').type(senha);
     cy.get('button.btn').click();
  })
+
+
+ /// <reference types="cypress" />
+
+Cypress.Commands.add('login_saucedemo', (username = 'standard_user', password = 'secret_sauce') => {
+  cy.visit('/');
+  cy.get('[data-test="username"]').type(username);
+  cy.get('[data-test="password"]').type(password);
+  cy.get('[data-test="login-button"]').click();
+
+  cy.url().should('include', '/inventory.html');
+});
+
