@@ -6,11 +6,26 @@
   },
   "item": [
     {
+      "name": "GET",
+      "item": []
+    },
+    {
       "name": "Encontra pokemon",
       "request": {
         "method": "GET",
         "url": {
-          "raw": ""
+          "raw": "https://pokeapi.co/api/v2/pokemon/ditto",
+          "protocol": "https",
+          "host": [
+            "pokeapi",
+            "co"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "pokemon",
+            "ditto"
+          ]
         }
       }
     },
@@ -19,16 +34,60 @@
       "request": {
         "method": "GET",
         "url": {
-          "raw": ""
+          "raw": "https://pokeapi.co/api/v2/pokemon/nao-existe",
+          "protocol": "https",
+          "host": [
+            "pokeapi",
+            "co"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "pokemon",
+            "nao-existe"
+          ]
         }
       }
     },
     {
       "name": "erro de endpoint",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "url": {
-          "raw": ""
+          "raw": "https://pokeapi.co/api/v2/pokemo/ditto",
+          "protocol": "https",
+          "host": [
+            "pokeapi",
+            "co"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "pokemo",
+            "ditto"
+          ]
         }
       }
     }
